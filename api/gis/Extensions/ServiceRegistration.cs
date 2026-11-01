@@ -1,6 +1,5 @@
 ﻿using gis.Helpers;
 using gis.Services;
-//using gis.Services;
 
 namespace gis.Extensions
 {
@@ -14,6 +13,7 @@ namespace gis.Extensions
             services.AddScoped<AuthService>();
             services.AddScoped<UserService>();
             services.AddScoped<RanhGioiService>();
+            services.AddScoped<LegendService>();
             return services;
         }
     }

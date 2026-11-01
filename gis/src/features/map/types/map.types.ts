@@ -21,3 +21,12 @@ export type Info = {
     title: string;
     description: string;
 }
+export type LegendItem = {
+  name: string;
+  icon: string; //url to the icon image
+  minZoom: number;
+  legendID: number;
+  type: string;
+  color: string;
+  sort: number;
+};

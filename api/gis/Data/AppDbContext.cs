@@ -21,7 +21,8 @@ namespace gis.Data
         public DbSet<DongHoKhachHang> DongHoKhachHangs { get; set; }
         public DbSet<RanhGioi> RanhGiois { get; set; }
         public DbSet<GhiThuTheoKy> GhiThuTheoKys { get; set; }
-       
+        public DbSet<Legend> Legends { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
@@ -32,6 +33,7 @@ namespace gis.Data
             modelBuilder.ApplyConfiguration(new DongHoKhachHangConfiguration());
             modelBuilder.ApplyConfiguration(new RanhGioiConfiguration());
             modelBuilder.ApplyConfiguration(new GhiThuTheoKyConfiguration());
+            modelBuilder.ApplyConfiguration(new LegendConfiguration());
         }
     }
 }

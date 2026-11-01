@@ -9,17 +9,20 @@ public class UnitOfWork
     public AuthRepository AuthRepository { get; }
     public RanhGioiRepository RanhGioiRepository { get; }
     public UserRepository UserRepository { get; }
+    public LegendRepository LegendRepository { get; }
     public UnitOfWork(
         AppDbContext context,
         AuthRepository authRepository,
         UserRepository userRepository,
-        RanhGioiRepository ranhGioiRepository
+        RanhGioiRepository ranhGioiRepository,
+        LegendRepository legendRepository
         )
     {
         _context = context;
         AuthRepository = authRepository;
         UserRepository = userRepository;
         RanhGioiRepository = ranhGioiRepository;
+        LegendRepository = legendRepository;
     }
 
     public Task<int> SaveChangesAsync()
