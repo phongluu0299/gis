@@ -19,7 +19,7 @@ namespace gis.Controllers
         [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
-            var data = await legendService.GetAllAsync();
+            var data = (await legendService.GetAllAsync()).OrderBy(c => c.Sort);
             return Ok(
                 new Result<IEnumerable<Legend>>()
                 {

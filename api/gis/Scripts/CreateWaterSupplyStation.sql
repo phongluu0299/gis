@@ -1,0 +1,39 @@
+IF OBJECT_ID(N'dbo.geo_WaterSupplyStation', N'U') IS NULL
+BEGIN
+    CREATE TABLE [dbo].[geo_WaterSupplyStation]
+    (
+    [WaterSupplyStationID] int IDENTITY(1,1) NOT NULL CONSTRAINT [PK_geo_WaterSupplyStation] PRIMARY KEY,
+    [MA_HIEU] nvarchar(max) NOT NULL,
+    [TEN_NVQL] nvarchar(max) NOT NULL,
+    [DIEN_TICH_] nvarchar(max) NOT NULL,
+    [NGUON_GOC_] nvarchar(max) NOT NULL,
+    [GIAY_HIEN_] nvarchar(max) NOT NULL,
+    [GIAY_PHEP_] nvarchar(max) NOT NULL,
+    [NGAY_CAP] nvarchar(max) NOT NULL,
+    [CHAT_LUONG] nvarchar(max) NOT NULL,
+    [KET_CAU_GI] nvarchar(max) NOT NULL,
+    [TINH_HINH_] nvarchar(max) NOT NULL,
+    [KHA_NANG_M] nvarchar(max) NOT NULL,
+    [OBJECTID] int NOT NULL,
+    [CS_THIET_K] int NOT NULL,
+    [KHA_NANG_P] int NOT NULL,
+    [SO_HO_TREN] int NOT NULL,
+    [SO_HO_SU_D] int NOT NULL,
+    [DO_SAU_GIE] int NOT NULL,
+    [TONG_CHIEU] int NOT NULL,
+    [D34] int NOT NULL,
+    [D42] int NOT NULL,
+    [D49] int NOT NULL,
+    [D60] int NOT NULL,
+    [D75] int NOT NULL,
+    [D90] int NOT NULL,
+    [D114] int NOT NULL,
+    [D168] int NOT NULL,
+    [CHIEU_DAI] int NOT NULL,
+    [SO_HO_TANG] int NOT NULL,
+    [DUONG_KINH] int NOT NULL,
+    [LUU_LUONG_] float NOT NULL,
+    [MUC_NUOC_T] float NOT NULL,
+    [Geometry] geometry NOT NULL
+    );
+END;

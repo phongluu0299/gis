@@ -1,4 +1,4 @@
-﻿using gis.Data;
+using gis.Data;
 using gis.Repositories;
 using Microsoft.EntityFrameworkCore.Storage;
 
@@ -10,12 +10,16 @@ public class UnitOfWork
     public RanhGioiRepository RanhGioiRepository { get; }
     public UserRepository UserRepository { get; }
     public LegendRepository LegendRepository { get; }
+    public PipelineRepository PipelineRepository { get; }
+    public WaterSupplyStationRepository WaterSupplyStationRepository { get; }
     public UnitOfWork(
         AppDbContext context,
         AuthRepository authRepository,
         UserRepository userRepository,
         RanhGioiRepository ranhGioiRepository,
-        LegendRepository legendRepository
+        LegendRepository legendRepository,
+        PipelineRepository pipelineRepository,
+        WaterSupplyStationRepository waterSupplyStationRepository
         )
     {
         _context = context;
@@ -23,6 +27,8 @@ public class UnitOfWork
         UserRepository = userRepository;
         RanhGioiRepository = ranhGioiRepository;
         LegendRepository = legendRepository;
+        PipelineRepository = pipelineRepository;
+        WaterSupplyStationRepository = waterSupplyStationRepository;
     }
 
     public Task<int> SaveChangesAsync()

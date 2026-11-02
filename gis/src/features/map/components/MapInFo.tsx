@@ -25,7 +25,8 @@ export default function MapInFo({ infoData, setInfoData }: MapInFoProps) {
         aria-label="Đóng thông tin"
         onClick={() => setInfoData(null)}
       >
-        <X className="size-8" />
+        <X className="size-16"/>
+      
       </Button>
     </CardHeader>
 

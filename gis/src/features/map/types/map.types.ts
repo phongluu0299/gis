@@ -1,4 +1,4 @@
-import type { MultiPolygon } from "geojson";
+import type { MultiPolygon,Point } from "geojson";
 
 export type RanhGioi = {
   ranhGioiID: number;
@@ -29,4 +29,21 @@ export type LegendItem = {
   type: string;
   color: string;
   sort: number;
+};
+
+export type PipeLine = {
+  pipelineID: number;
+  loai: string;
+  geometry: MultiPolygon;
+};
+export type WaterSupplyStation = {
+  waterSupplyStationID: number;
+  maHieu: string;
+  geometry: Point;
+};
+export type WaterMeter = {
+  dongHoKhachHangId: number;
+  maKH: string;
+  location: Point;
+
 };

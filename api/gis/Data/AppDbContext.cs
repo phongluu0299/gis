@@ -1,4 +1,4 @@
-﻿
+
 using gis.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +22,8 @@ namespace gis.Data
         public DbSet<RanhGioi> RanhGiois { get; set; }
         public DbSet<GhiThuTheoKy> GhiThuTheoKys { get; set; }
         public DbSet<Legend> Legends { get; set; }
+        public DbSet<Pipeline> Pipelines { get; set; }
+        public DbSet<WaterSupplyStation> WaterSupplyStations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +36,8 @@ namespace gis.Data
             modelBuilder.ApplyConfiguration(new RanhGioiConfiguration());
             modelBuilder.ApplyConfiguration(new GhiThuTheoKyConfiguration());
             modelBuilder.ApplyConfiguration(new LegendConfiguration());
+            modelBuilder.ApplyConfiguration(new PipelineConfiguration());
+            modelBuilder.ApplyConfiguration(new WaterSupplyStationConfiguration());
         }
     }
 }

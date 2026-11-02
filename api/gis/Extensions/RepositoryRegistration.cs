@@ -1,4 +1,4 @@
-﻿using gis.Helpers;
+using gis.Helpers;
 using gis.Repositories;
 
 namespace gis.Extensions
@@ -15,6 +15,8 @@ namespace gis.Extensions
            
             services.AddScoped<RanhGioiRepository>();
             services.AddScoped<LegendRepository>();
+            services.AddScoped<PipelineRepository>();
+            services.AddScoped<WaterSupplyStationRepository>();
             return services;
         }
     }

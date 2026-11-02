@@ -7,20 +7,17 @@ import {
 } from "lucide-react";
 import { useMap, useMapEvents } from "react-leaflet";
 import { mapService } from "../services/map.service";
+import type { Result } from "@/types/basetype";
+import type { LegendItem } from "../types/map.types";
 
-export default function MapSidebar() {
-  const map = useMap();
-  const [mapZoom, setMapZoom] = useState(() => map.getZoom());
-
-  useMapEvents({
-    zoomend: () => setMapZoom(map.getZoom()),
-  });
-
-  const { data, isPending, isError } = useQuery({
-    queryKey: ["map", "legend"],
-    queryFn: mapService.getAllLegend,
-    staleTime: 60 * 60 * 1000,
-  });
+type MapSidebarProps = {
+  mapZoom: number;
+  map: L.Map;
+  data: Result<LegendItem[]> | undefined;
+  isPending: boolean;
+  isError: boolean;
+};
+export default function MapSidebar({ mapZoom, map, data, isPending, isError }: MapSidebarProps) {
 
   const visibleItems = (data?.data ?? []).filter(
     (item) => mapZoom >= item.minZoom,
@@ -63,12 +60,7 @@ export default function MapSidebar() {
               {visibleItems.map((item) => (
                 <li key={item.name} className="flex items-center gap-3 text-sm">
                   <img
-                    src={
-                      new URL(
-                        `../../../assets/iconmap/${item.icon}`,
-                        import.meta.url,
-                      ).href
-                    }
+                     src={`/iconmap/${item.icon}`}
                     alt=""
                     className="size-6 shrink-0 object-contain"
                   />
