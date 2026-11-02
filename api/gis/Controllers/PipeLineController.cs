@@ -10,22 +10,23 @@ namespace gis.Controllers
     [ApiController]
     [Route("[controller]")]
     [Authorize]
-    public class RanhGioiController : ControllerBase
+    public class PipeLineController : ControllerBase
     {
-        private readonly RanhGioiService ranhGioiService;
-        public RanhGioiController (RanhGioiService ranhGioiService)
+        private readonly PipelineService pipelineService;
+        public PipeLineController(PipelineService pipelineService)
         {
-            this.ranhGioiService = ranhGioiService;
+            this.pipelineService = pipelineService;
         }
         [HttpGet("all")]
         public async Task<IActionResult> GellAll()
         {
+            var data = await pipelineService.GetAllAsync();
             return Ok(
-                new Result<IEnumerable<RanhGioi>>() 
+                new Result<IEnumerable<Pipeline>>() 
                 { 
                     Code = StatusCodes.Status200OK, 
                     Message = "", 
-                    Data = await ranhGioiService.GetAllAsync() 
+                    Data = data
                 }
                 );
         }

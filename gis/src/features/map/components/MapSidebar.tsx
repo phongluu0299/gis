@@ -1,12 +1,10 @@
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+
 import {
   Info,
   Minus,
   Plus,
 } from "lucide-react";
-import { useMap, useMapEvents } from "react-leaflet";
-import { mapService } from "../services/map.service";
+
 import type { Result } from "@/types/basetype";
 import type { LegendItem } from "../types/map.types";
 

@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace gis.Helper
+namespace gis.Helpers
 {
     public static class SqlCommand
     {

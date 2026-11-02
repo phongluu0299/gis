@@ -41,9 +41,23 @@ export type WaterSupplyStation = {
   maHieu: string;
   geometry: Point;
 };
+export type WaterMeterByBound = {
+  id: number;
+  location: Point;
+
+};
 export type WaterMeter = {
   dongHoKhachHangId: number;
-  maKH: string;
+  maKH?: string | null;
   location: Point;
+  maDB?: string | null;
+  tenKH?: string | null;
+  diaChi?: string | null;
+  maLT?: string | null;
+  trangThaiDongHo?: string | null;
+  thoiHanSuDung?: Date | null;
+  nsx?: Date | null;
+  nguoiCapNhat?: string | null;
+  ngayCapNhat?: Date | null;
 
 };

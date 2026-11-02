@@ -34,8 +34,8 @@ export default function MapInFo({ infoData, setInfoData }: MapInFoProps) {
       <dl className="space-y-4 text-sm">
         {infoData?.map((item) => 
          (
-               <div className="flex items-start justify-between gap-4">
-            <dt className="text-muted-foreground">{item.title}</dt>
+               <div key={item.title} className="flex items-start justify-between gap-4">
+            <dt className="text-muted-foreground text-nowrap font-bold">{item.title}:</dt>
             <dd className="text-right font-medium">
               {item.description}
             </dd>

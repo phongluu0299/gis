@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 
-namespace gis.Helper
+namespace gis.Helpers
 {
     public static class SqlQueryExtensions
     {
@@ -47,7 +47,7 @@ namespace gis.Helper
 
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
-                optionsBuilder.UseSqlServer(connection, options => options.EnableRetryOnFailure());
+                optionsBuilder.UseSqlServer(connection, options => options.EnableRetryOnFailure().UseNetTopologySuite());
 
                 base.OnConfiguring(optionsBuilder);
             }

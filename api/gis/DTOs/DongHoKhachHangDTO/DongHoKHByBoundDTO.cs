@@ -1,11 +1,13 @@
 ﻿
+using NetTopologySuite.Geometries;
+
 namespace gis.DTOs.DongHoKhachHangDTO
 {
     public class DongHoKHByBoundDTO
     {
         public long ID { get; set; }
-        public decimal? LocationX { get; set; }
-        public decimal? LocationY { get; set; }
+        public Point? Location { get; set; }
+      
     }
     
     public class ParamDHKHByBoundDTO
