@@ -7,6 +7,7 @@ import LoginPage from "@/features/auth/pages/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
 import ReportPage from "@/features/report/pages/ReportPage";
 import MapPage from "@/features/map/pages/MapPage"; 
+import Permission from "@/features/permission/pages/Permission";
 const router = createBrowserRouter([
  
   {
@@ -21,7 +22,23 @@ const router = createBrowserRouter([
             index: true,
             element: <ReportPage />,
           },
-           {
+          {
+            index: true,
+            path: "/permission-group",
+            element: <Permission />,
+          },
+          {
+            index: true,
+            path: "/permission-user",
+            element: <Permission />,
+          },
+          {
+            index: true,
+            path: "/user",
+            element: <Permission />,
+          },
+          {
+            index: true,
             path: "/map",
             element: <MapPage />,
           }

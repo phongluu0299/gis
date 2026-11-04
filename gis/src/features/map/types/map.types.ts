@@ -61,3 +61,25 @@ export type WaterMeter = {
   ngayCapNhat?: Date | null;
 
 };
+
+export type BillingPeriodByBound = {
+  id: number;
+  location: Point;
+
+};
+
+export type BillingPeriod = {
+  id: number;
+
+  hoTenKH?: string | null;
+  maDB?: string | null;
+  chiSoMoi?: number | null;
+  chiSoCu?: number | null;
+  luongTieuThu?: number | null;
+  thanhTien?: number | null;
+  trangThaiTT: Point;
+  maNV?: string | null;
+  tenNV?: string | null;
+  ngayGhi?: string | null;
+
+};

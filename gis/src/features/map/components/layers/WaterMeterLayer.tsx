@@ -9,10 +9,10 @@ type WaterMeterLayerProps = {
   mapBounds: L.LatLngBounds;
 };
 
-const stationIcon = L.icon({
+const iconMarker = L.icon({
   iconUrl: "/iconmap/water-meter.png",
-  iconSize: [14, 14],
-  iconAnchor: [7, 14], // Giữa đáy ảnh nằm đúng tọa độ
+  iconSize: [21, 21],
+  iconAnchor: [10, 21], // Giữa đáy ảnh nằm đúng tọa độ
 });
 
 const toInfo = (WaterMeter: WaterMeter | null): Info[] => {
@@ -66,7 +66,7 @@ export default function WaterMeterLayer({
 const handleClick = async (id: number) => {
   try {
     console.log("Fetching water meter details for id:", id);
-    const response = await queryClient.query({
+    const response = await queryClient.fetchQuery({
       queryKey: ["WaterMeter", "detail", id],
       queryFn: () => mapService.getWaterMeterById(id),
       staleTime: 5 * 60 * 1000,
@@ -84,7 +84,7 @@ const handleClick = async (id: number) => {
         <GeoJSON
           key={waterMeter.id}
           data={waterMeter.location}
-          pointToLayer={(_, latlng) => L.marker(latlng, { icon: stationIcon })}
+          pointToLayer={(_, latlng) => L.marker(latlng, { icon: iconMarker })}
           eventHandlers={{
             click: () => {
               void handleClick(waterMeter.id);

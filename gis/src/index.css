@@ -33,3 +33,13 @@ body {
 .leaflet-interactive:focus {
   outline: none;
 }
+
+@layer components{
+    .app-input-field {
+    @apply h-9 w-full rounded-xl border border-slate-200
+      bg-white px-3 text-[13px] outline-none
+      transition placeholder:text-slate-400
+      focus:border-(--color-primary)
+      focus:ring-4 focus:ring-indigo-50;
+  }
+}

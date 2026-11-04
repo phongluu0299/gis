@@ -1,8 +1,8 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import { BASE_MAPS, MAP_BOUNDS, MAP_CONFIG } from "../config/map.config";
 import { useState } from "react";
-import BaseMap from "../components/BaseMap";
 import MapLayers from "../components/layers/MapLayers";
+
 
 export default function MapPage() {
   const [baseMap, setBaseMap] = useState(BASE_MAPS.satellite);
@@ -19,9 +19,9 @@ export default function MapPage() {
           attribution={baseMap.attribution}
           maxZoom={baseMap.maxZoom}
         />
-        <MapLayers />
+        <MapLayers baseMap={baseMap} setBaseMap={setBaseMap} />
       </MapContainer>
-      <BaseMap setBaseMap={setBaseMap} baseMap={baseMap} /> {/* Bản đồ nền */}
+  
     </div>
   );
 }

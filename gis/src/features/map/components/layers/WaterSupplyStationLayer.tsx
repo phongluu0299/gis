@@ -9,8 +9,8 @@ type WaterSupplyStationLayerrProps = {
 
 const stationIcon = L.icon({
   iconUrl: "/iconmap/water-system.png",
-  iconSize: [14, 14],
-  iconAnchor: [7, 14], // Giữa đáy ảnh nằm đúng tọa độ
+  iconSize: [21, 21],
+  iconAnchor: [10, 21], // Giữa đáy ảnh nằm đúng tọa độ
 });
 
 const toInfo = (WaterSupplyStation: WaterSupplyStation | null): Info[] => {

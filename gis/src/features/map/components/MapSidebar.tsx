@@ -1,21 +1,25 @@
 
+import { useId } from "react";
 import {
   Info,
   Minus,
   Plus,
+  Map,
 } from "lucide-react";
 
 import type { Result } from "@/types/basetype";
 import type { LegendItem } from "../types/map.types";
+import BaseMap, { type BaseMapProps } from "./BaseMap";
 
-type MapSidebarProps = {
+type MapSidebarProps = BaseMapProps & {
   mapZoom: number;
   map: L.Map;
   data: Result<LegendItem[]> | undefined;
   isPending: boolean;
   isError: boolean;
 };
-export default function MapSidebar({ mapZoom, map, data, isPending, isError }: MapSidebarProps) {
+export default function MapSidebar({ mapZoom, map, data, isPending, isError, baseMap, setBaseMap }: MapSidebarProps) {
+  const panelGroup = useId();
 
   const visibleItems = (data?.data ?? []).filter(
     (item) => mapZoom >= item.minZoom,
@@ -33,7 +37,7 @@ export default function MapSidebar({ mapZoom, map, data, isPending, isError }: M
       onClick={(event) => event.stopPropagation()}
       onWheel={(event) => event.stopPropagation()}
     >
-      <details>
+      <details name={panelGroup}>
         <summary
           aria-label="Chú thích"
           title="Chú thích"
@@ -67,6 +71,21 @@ export default function MapSidebar({ mapZoom, map, data, isPending, isError }: M
               ))}
             </ul>
           )}
+        </div>
+      </details>
+
+      <details name={panelGroup}>
+        <summary
+          aria-label="Bản đồ nền"
+          title="Bản đồ nền"
+          className={`${buttonClass} list-none [&::-webkit-details-marker]:hidden`}
+        >
+          <Map size={20} />
+        </summary>
+
+        <div className="absolute left-full top-0 ml-2 w-60 rounded-xl bg-white p-4 shadow-lg">
+          <h3 className="mb-3 text-sm font-semibold">Bản đồ nền</h3>
+          <BaseMap baseMap={baseMap} setBaseMap={setBaseMap} />
         </div>
       </details>
 

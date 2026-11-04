@@ -32,7 +32,7 @@ namespace gis.Controllers
                 );
         } 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetByBound(long id )
+        public async Task<IActionResult> GetInfo(long id )
         {
             var data = await dongHoKhachHangService.GetByIdAsync(id);
             return Ok(

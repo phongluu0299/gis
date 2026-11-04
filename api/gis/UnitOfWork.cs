@@ -13,6 +13,7 @@ public class UnitOfWork
     public PipelineRepository PipelineRepository { get; }
     public WaterSupplyStationRepository WaterSupplyStationRepository { get; }
     public DongHoKhachHangRepository DongHoKhachHangRepository { get; }
+    public GhiThuTheoKyRepository GhiThuTheoKyRepository { get; }
     public UnitOfWork(
         AppDbContext context,
         AuthRepository authRepository,
@@ -21,7 +22,8 @@ public class UnitOfWork
         LegendRepository legendRepository,
         PipelineRepository pipelineRepository,
         WaterSupplyStationRepository waterSupplyStationRepository,
-        DongHoKhachHangRepository dongHoKhachHangRepository
+        DongHoKhachHangRepository dongHoKhachHangRepository,
+        GhiThuTheoKyRepository ghiThuTheoKyRepository
         )
     {
         _context = context;
@@ -32,6 +34,7 @@ public class UnitOfWork
         PipelineRepository = pipelineRepository;
         WaterSupplyStationRepository = waterSupplyStationRepository;
         DongHoKhachHangRepository = dongHoKhachHangRepository;
+        GhiThuTheoKyRepository = ghiThuTheoKyRepository;
     }
 
     public Task<int> SaveChangesAsync()

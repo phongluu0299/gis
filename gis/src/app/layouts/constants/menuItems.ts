@@ -1,5 +1,9 @@
 import {
-    ChartColumn
+    
+    Map,
+    User,
+Users,
+UserKey
   } from "lucide-react";
   
   export type MenuItem =
@@ -17,19 +21,31 @@ import {
       };
   
   export const menuItems: MenuItem[] = [
-    {
-      type: "link",
-      label: "Thống kê giao dịch",
-      icon: ChartColumn,
-      path: "/",
-    },
+
     {
       type: "link",
       label: "Bản đồ",
-      icon: ChartColumn,
+      icon: Map,
       path: "/map",
     },
-   
+    {
+      type: "link",
+      label: "Nhóm quyền",
+      icon: Users,
+      path: "/permission-group",
+    },
+    {
+      type: "link",
+      label: "Phân quyền",
+      icon: UserKey,
+      path: "/permission-user",
+    },
+     {
+      type: "link",
+      label: "Người dùng",
+      icon: User,
+      path: "/user",
+    },
   ];
   
   export const flattenMenuLinks = (items: MenuItem[]) => {

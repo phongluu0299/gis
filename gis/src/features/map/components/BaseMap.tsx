@@ -2,10 +2,17 @@
 
 import { BASE_MAPS } from "../config/map.config";
 
-export default function BaseMap({ baseMap, setBaseMap }: { baseMap: typeof BASE_MAPS.satellite; setBaseMap: (map: typeof BASE_MAPS.satellite) => void; }) {
+export type BaseMapProps = {
+  baseMap: typeof BASE_MAPS.satellite;
+  setBaseMap: (map: typeof BASE_MAPS.satellite) => void;
+};
+
+export default function BaseMap({ baseMap, setBaseMap }: BaseMapProps) {
   return (
-   <div className="absolute top-2 right-2 bg-white p-2 rounded">
+   <div>
          <select
+           aria-label="Bản đồ nền"
+           className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700"
            value={baseMap.name}
            onChange={(e) => {
              const selectedMap = Object.values(BASE_MAPS).find(
