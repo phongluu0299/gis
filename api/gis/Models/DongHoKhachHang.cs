@@ -50,9 +50,9 @@ namespace gis.Models
 
         public string? TrangThaiDongHo { get; set; }
 
-        [Range(-90, 90)]
-        public decimal? LocationX { get; set; }
         [Range(-180, 180)]
+        public decimal? LocationX { get; set; }
+        [Range(-90, 90)]
         public decimal? LocationY { get; set; }
 
         /// <summary>

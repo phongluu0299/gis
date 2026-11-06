@@ -1,5 +1,24 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
+
+/* Semantic colors used by the shadcn/ui components. */
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #0f172a;
+  --color-muted: #f8fafc;
+  --color-muted-foreground: #64748b;
+  --color-accent: #eef2ff;
+  --color-accent-foreground: #312e81;
+  --color-border: #e2e8f0;
+  --color-input: #cbd5e1;
+  --color-ring: #6366f1;
+  --color-destructive: #dc2626;
+}
+
 html,
 body,
 #root {
@@ -15,6 +34,7 @@ body,
 
 body {
   font-family: system-ui, sans-serif;
+  background-color: aliceblue;
 }
 
 
@@ -41,5 +61,11 @@ body {
       transition placeholder:text-slate-400
       focus:border-(--color-primary)
       focus:ring-4 focus:ring-indigo-50;
+  }
+  .app-text-input-default{
+    @apply h-11 bg-white px-3 focus-visible:ring-2 focus-visible:ring-indigo-100;
+  }
+  .app-textarea-default{
+    @apply min-h-28 resize-y bg-white px-3 py-3 focus-visible:ring-2 focus-visible:ring-indigo-100;
   }
 }

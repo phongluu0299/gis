@@ -10,6 +10,7 @@ const buttonVariants = cva(
     transition-all duration-200
     disabled:pointer-events-none disabled:opacity-50
     active:scale-[0.98]
+    cursor-pointer
   `,
   {
     variants: {
@@ -51,6 +52,7 @@ const buttonVariants = cva(
       },
 
       size: {
+        xs: "h-7 px-2",
         sm: "h-8 px-3",
         md: "h-9 px-3.5",
         lg: "h-10 px-4",

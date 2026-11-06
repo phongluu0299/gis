@@ -58,11 +58,11 @@ namespace gis.Models
         public string? TenNV { get; set; }
 
         [Column(TypeName = "decimal(10,7)")]
-        [Range(-90, 90)]
+        [Range(-180, 180)]
         public decimal? LocationX { get; set; }
 
         [Column(TypeName = "decimal(10,7)")]
-        [Range(-180, 180)]
+        [Range(-90, 90)]
         public decimal? LocationY { get; set; }
 
         [Column(TypeName = "geography")]

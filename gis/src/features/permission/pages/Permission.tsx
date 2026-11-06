@@ -4,35 +4,40 @@ import { toast } from "sonner";
 
 import { permissionService } from "../services/permission.service";
 import type {
-  PermissionRequest,
-  PermissionResponse,
+  ListPermission,
+  ParamListPermission,
 } from "../types/permission.types";
 
-// TODO: Import filter và columns khi đã tạo.
-// import AppTableNoPagination from "@/components/comon/AppTable/AppTableNoPagination";
+import {permissionColumns} from "../components/PermissionColumns";
+import { AppTable } from "@/components/comon/AppTable";
+import PermissionFilter from "../components/PermissionFilter";
+import AddPermissionDialog from "../components/AddPermissionDialog";
+import { Button } from "@/components/ui/button";
 
-const defaultFilters: PermissionRequest = {
-  // TODO: Giá trị bộ lọc mặc định.
+import {RotateCw} from "lucide-react";
+import EditPermissionDialog from "../components/EditPermissionDialog";
+const defaultFilters: ParamListPermission = {
+  permissionName: "",
 };
 
-const EMPTY_REPORTS: PermissionResponse[] = [];
+const EMPTY_DATA: ListPermission[] = [];
 
 export default function Permission() {
   const [searchParams, setSearchParams] =
-    useState<PermissionRequest>(defaultFilters);
+    useState<ParamListPermission>(defaultFilters);
 
-  // TODO: Bỏ comment khi service đã có hàm get.
-  /*
+  
   const { data, isLoading, refetch, isFetching, error, isError } = useQuery({
     queryKey: ["permission", "get", searchParams],
     queryFn: () => permissionService.get(searchParams),
     staleTime: 5 * 60 * 1000,
   });
 
-  const reports = data?.data ?? EMPTY_REPORTS;
+  const permissions = data?.data ?? EMPTY_DATA;
 
   useEffect(() => {
     if (data && data.code >= 400) {
+      console.log(data.data);
       toast.error(data.message || "Có lỗi xảy ra", {
         id: "permission-error",
       });
@@ -41,28 +46,44 @@ export default function Permission() {
 
   useEffect(() => {
     if (isError) {
+      console.log(error);
       toast.error(error?.message || "Có lỗi xảy ra", {
         id: "permission-error",
       });
     }
   }, [isError, error]);
-  */
 
+
+  const [editPermissionId, setEditPermissionId] = useState<number | null>(null);
+  const [openEditDialog, setOpenEditDialog] = useState(false);
+  const columns = permissionColumns({
+  onEdit: (id) => {
+    setEditPermissionId(id);
+    setOpenEditDialog(true);
+  },
+  onDelete: (id) => {
+    alert(`Deleting permission with ID: ${id}`);
+  },
+ 
+});
   return (
-    <div className="space-y-6">
+  <>
+    <div className="space-y-6 p-4">
       <div>
         <h1 className="text-3xl font-bold text-slate-950">
-          {/* TODO: Tiêu đề trang */}
+          Nhóm quyền
         </h1>
 
         <div className="mt-2"></div>
       </div>
 
-      {/* TODO: Filter
-        Truyền các props:
-        setSearchParams, searchParams, refetch,
-        isFetching, defaultFilters.
-      */}
+       <PermissionFilter
+        setSearchParams={setSearchParams}
+       
+        refetch={refetch}
+        isFetching={isFetching}
+        defaultFilters={defaultFilters}
+      /> 
 
       <div
         className="
@@ -70,14 +91,29 @@ export default function Permission() {
           shadow-[0_16px_40px_rgba(15,23,42,0.06)]
         "
       >
-        {/* TODO: Bỏ comment khi đã có query và columns.
-        <AppTableNoPagination
-          data={reports}
+        <div className="flex justify-start gap-2 p-4">
+           <AddPermissionDialog />
+
+             <Button type="button" variant="success" onClick={() => refetch()} className="cursor-pointer" title="Làm mới">
+            <RotateCw className="h-4 w-4" />
+           </Button>
+        </div>
+        <AppTable
+          data={permissions}
           columns={columns}
           isloading={isLoading}
         />
-        */}
+       
       </div>
     </div>
+
+    {editPermissionId !== null && (
+      <EditPermissionDialog
+        id={editPermissionId}
+        open={openEditDialog}
+        onOpenChange={setOpenEditDialog}
+      />
+    )}
+  </>
   );
 }

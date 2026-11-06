@@ -1,9 +1,7 @@
 import { Outlet } from "react-router-dom";
 
 import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import { useSidebarStore } from "@/stores/sidebarStore";
-import AppBreadcrumb from "./components/AppBreadcrumb";
+
 export default function MainLayout() {
 
   return (

@@ -47,7 +47,7 @@ export default function AppTable<TData>({
   return (
     <>
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full table-fixed">
           <thead className="bg-slate-50">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
@@ -56,6 +56,7 @@ export default function AppTable<TData>({
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
                     className="select-none px-6 py-4 text-left text-sm font-semibold text-slate-700"
+                           style={{ width: header.column.columnDef.meta?.width }}
                   >
                     <div className="flex cursor-pointer items-center gap-1">
                       {flexRender(
@@ -95,6 +96,7 @@ export default function AppTable<TData>({
                     <td
                       key={cell.id}
                       className="px-6 py-4 text-sm text-slate-700"
+                             style={{ width: cell.column.columnDef.meta?.width }}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

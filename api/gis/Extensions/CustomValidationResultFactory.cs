@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using gis.Helpers;
+using gis.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Results;
@@ -19,32 +20,36 @@ public class CustomValidationResultFactory
             .Select(error =>
             {
                 var field = error.PropertyName;
-                var index = 0;
-
-                var match = Regex.Match(field, @"\[(\d+)\]\.(.+)$");
-
-                if (match.Success)
-                {
-                    index = int.Parse(match.Groups[1].Value);
-                    field = match.Groups[2].Value;
-                }
 
                 return new ValidateRes
                 {
-                    Index = index,
-                    Field = field,
-                    Code = error.ErrorMessage
+                    Field = Utilities.ToCamelCase(field),
+                    Message = error.ErrorMessage
                 };
             })
             .ToList();
-
-        IActionResult response = new BadRequestObjectResult(
-            new Result<List<ValidateRes>>
-            {
-                Code = 400,
-                Message = "Dữ liệu không hợp lệ.",
-                Data = errors
-            });
+        IActionResult? response;
+        if (errors.Count == 1)
+        {
+            response = new BadRequestObjectResult(
+                new Result<ValidateRes>
+                {
+                    Code = 400,
+                    Message = "Dữ liệu không hợp lệ.",
+                    Data = errors[0]
+                });
+            return Task.FromResult<IActionResult?>(response);
+        }
+        else
+        {
+            response = new BadRequestObjectResult(
+               new Result<List<ValidateRes>>
+               {
+                   Code = 400,
+                   Message = "Dữ liệu không hợp lệ.",
+                   Data = errors
+               });
+        }
 
         return Task.FromResult<IActionResult?>(response);
     }

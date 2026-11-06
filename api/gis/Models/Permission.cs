@@ -1,4 +1,5 @@
 ﻿
+using gis.DTOs.PermissionDTO;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -11,12 +12,16 @@ namespace gis.Models
           
         }
 
+        public Permission(AddOrUpdPermissionDTO req)
+        {
+           
+            PermissionName = req.PermissionName;
+            Description = req.Description;
+        }
+
         [Key]
         public int PermissionID { get; set; }
 
-        [Required(ErrorMessage = "Vui lòng nhập tên nhóm quyền!")]
-        [StringLength(150)]
-   
         public string PermissionName { get; set; }
        
         public string? Description { get; set; }

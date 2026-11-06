@@ -18,6 +18,7 @@ namespace gis.Extensions
             services.AddScoped<WaterSupplyStationService>();
             services.AddScoped<DongHoKhachHangService>();
             services.AddScoped<GhiThuTheoKyService>();
+            services.AddScoped<PermissionService>();
             return services;
         }
     }

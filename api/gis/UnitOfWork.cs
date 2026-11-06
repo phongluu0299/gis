@@ -14,6 +14,7 @@ public class UnitOfWork
     public WaterSupplyStationRepository WaterSupplyStationRepository { get; }
     public DongHoKhachHangRepository DongHoKhachHangRepository { get; }
     public GhiThuTheoKyRepository GhiThuTheoKyRepository { get; }
+    public PermissionRepository PermissionRepository { get; }
     public UnitOfWork(
         AppDbContext context,
         AuthRepository authRepository,
@@ -23,7 +24,8 @@ public class UnitOfWork
         PipelineRepository pipelineRepository,
         WaterSupplyStationRepository waterSupplyStationRepository,
         DongHoKhachHangRepository dongHoKhachHangRepository,
-        GhiThuTheoKyRepository ghiThuTheoKyRepository
+        GhiThuTheoKyRepository ghiThuTheoKyRepository,
+        PermissionRepository permissionRepository
         )
     {
         _context = context;
@@ -35,6 +37,7 @@ public class UnitOfWork
         WaterSupplyStationRepository = waterSupplyStationRepository;
         DongHoKhachHangRepository = dongHoKhachHangRepository;
         GhiThuTheoKyRepository = ghiThuTheoKyRepository;
+        PermissionRepository = permissionRepository;
     }
 
     public Task<int> SaveChangesAsync()

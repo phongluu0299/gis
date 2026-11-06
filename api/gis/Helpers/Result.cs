@@ -1,6 +1,6 @@
 ﻿namespace gis.Helpers
 {
-    public class Result<T> where T : class
+    public class Result<T> 
     {
         public int Code { get; set; }
         public string Message { get; set; }
@@ -9,7 +9,7 @@
         {
         
         }
-        public Result(int code, string message, T data = null)
+        public Result(int code, string message, T data)
         {
             Code = code;
             Message = message;

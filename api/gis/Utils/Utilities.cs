@@ -25,5 +25,13 @@ namespace gis.Utils
 
             return Convert.ToHexString(hash).ToLower();
         }
+
+        public static string ToCamelCase(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+
+            return char.ToLowerInvariant(value[0]) + value.Substring(1);
+        }
     }
 }
